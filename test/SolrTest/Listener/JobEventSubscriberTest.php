@@ -9,6 +9,8 @@
 
 namespace SolrTest\Listener;
 
+use PHPUnit\Framework\TestCase;
+
 
 use Core\Options\ModuleOptions;
 use Doctrine\ODM\MongoDB\Event\PostFlushEventArgs;
@@ -35,7 +37,7 @@ use stdClass;
  * @package SolrTest\Listener
  * @coversDefaultClass \Solr\Listener\JobEventSubscriber
  */
-class JobEventSubscriberTest extends \PHPUnit_Framework_TestCase
+class JobEventSubscriberTest extends TestCase
 {
     /**
      * @var JobEventSubscriber
@@ -58,9 +60,9 @@ class JobEventSubscriberTest extends \PHPUnit_Framework_TestCase
     protected $entityToDocumentFilter;
 
     /**
-     * @see PHPUnit_Framework_TestCase::setUp()
+     * @see PHPUnit\Framework\TestCase::setUp()
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $options = $this->getMockBuilder(ModuleOptions::class)
             ->setMethods(['getJobsPath'])

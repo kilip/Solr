@@ -8,6 +8,8 @@
  */
 namespace SolrTest\Filter\EntityToDocument;
 
+use PHPUnit\Framework\TestCase;
+
 use Solr\Filter\EntityToDocument\JobEntityToSolrDocument as JobFilter;
 use Jobs\Entity\Job;
 use Jobs\Entity\Location;
@@ -24,7 +26,7 @@ use stdClass;
 /**
  * @coversDefaultClass \Solr\Filter\EntityToDocument\JobEntityToSolrDocument
  */
-class JobEntityToSolrDocumentTest extends \PHPUnit_Framework_TestCase
+class JobEntityToSolrDocumentTest extends TestCase
 {
     /**
      * @var JobFilter
@@ -32,9 +34,9 @@ class JobEntityToSolrDocumentTest extends \PHPUnit_Framework_TestCase
     protected $jobFilter;
 
     /**
-     * @see PHPUnit_Framework_TestCase::setUp()
+     * @see PHPUnit\Framework\TestCase::setUp()
      */
-    public function setUp()
+    protected function setUp():void
     {
         $this->jobFilter = new JobFilter(new \Solr\Options\ModuleOptions());
     }

@@ -9,6 +9,8 @@
 
 namespace SolrTest\Controller;
 
+use PHPUnit\Framework\TestCase;
+
 use Core\Console\ProgressBar;
 use Doctrine\MongoDB\CursorInterface;
 use Solr\Filter\EntityToDocument\JobEntityToSolrDocument;
@@ -28,7 +30,7 @@ use stdClass;
  * @package SolrTest\Controller
  * @coversDefaultClass \Solr\Controller\ConsoleController
  */
-class ConsoleControllerTest extends \PHPUnit_Framework_TestCase
+class ConsoleControllerTest extends TestCase
 {
     
     /**
@@ -62,9 +64,9 @@ class ConsoleControllerTest extends \PHPUnit_Framework_TestCase
     protected $options;
     
     /**
-     * @see PHPUnit_Framework_TestCase::setUp()
+     * @see PHPUnit\Framework\TestCase::setUp()
      */
-    public function setUp()
+    protected function setUp():void
     {
         $this->client = $this->getMockBuilder(SolrClient::class)
             ->disableOriginalConstructor()
@@ -165,6 +167,6 @@ class ConsoleControllerTest extends \PHPUnit_Framework_TestCase
     public function testGetProgressBarFactory()
     {
         $progressBarFactory = $this->controller->getProgressBarFactory();
-        $this->assertInternalType('callable', $progressBarFactory);
+        $this->assertIsCallable($progressBarFactory);
     }
 }

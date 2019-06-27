@@ -9,6 +9,8 @@
 
 namespace SolrTest\Entity;
 
+use PHPUnit\Framework\TestCase;
+
 use Solr\Entity\JobProxy;
 use Jobs\Entity\JobInterface;
 use ArrayObject;
@@ -22,7 +24,7 @@ use Core\Entity\PermissionsInterface;
 /**
  * @coversDefaultClass \Solr\Entity\JobProxy
  */
-class JobProxyTest extends \PHPUnit_Framework_TestCase
+class JobProxyTest extends TestCase
 {
 
     /**
@@ -41,9 +43,9 @@ class JobProxyTest extends \PHPUnit_Framework_TestCase
     protected $solrResult;
 
     /**
-     * @see \PHPUnit_Framework_TestCase::setUp()
+     * @see \PHPUnit\Framework\TestCase::setUp()
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->jobDecorated = $this->getMockBuilder(JobInterface::class)
             ->getMock();

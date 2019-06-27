@@ -9,6 +9,8 @@
 
 namespace SolrTest\Paginator\Adapter;
 
+use PHPUnit\Framework\TestCase;
+
 
 use Solr\Bridge\ResultConverter;
 use Solr\Filter\AbstractPaginationQuery;
@@ -25,10 +27,10 @@ use ArrayObject;
  * @author  Miroslav Fedeleš <miroslav.fedeles@gmail.com>
  * @since   0.26
  * @package SolrTest\Paginator\Adapter
- * @covers  Solr\Paginator\Adapter\SolrAdapter
+ * @covers \Solr\Paginator\Adapter\SolrAdapter
  * @requires extension solr
  */
-class SolrAdapterTest extends \PHPUnit_Framework_TestCase
+class SolrAdapterTest extends TestCase
 {
     /**
      * Class Under test
@@ -77,7 +79,7 @@ class SolrAdapterTest extends \PHPUnit_Framework_TestCase
         ]
     ];
 
-    public function setUp()
+    protected function setUp(): void
     {
         $client = $this->getMockBuilder(\SolrClient::class)
             ->disableOriginalConstructor()

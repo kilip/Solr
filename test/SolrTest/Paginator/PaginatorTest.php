@@ -8,6 +8,8 @@
  */
 namespace SolrTest\Paginator;
 
+use PHPUnit\Framework\TestCase;
+
 use Solr\Paginator\Paginator;
 use Solr\Paginator\Adapter\SolrAdapter;
 use Solr\Facets;
@@ -15,7 +17,7 @@ use Solr\Facets;
 /**
  * @coversDefaultClass \Solr\Paginator\Paginator
  */
-class PaginatorTest extends \PHPUnit_Framework_TestCase
+class PaginatorTest extends TestCase
 {
 
     /**
