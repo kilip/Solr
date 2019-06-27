@@ -29,7 +29,6 @@ use DateTime;
  */
 class JobBoardPaginationQuery extends AbstractPaginationQuery
 {
-
     /**
      * @var ModuleOptions $options
      */
@@ -138,6 +137,8 @@ class JobBoardPaginationQuery extends AbstractPaginationQuery
             $facets->addDefinition($facetField['name'], $facetField['label']);
         }
 
+        $this->configureFilterQuery($query);
+
         $facets->setParams($params)
                ->setupQuery($query);
 
@@ -156,6 +157,19 @@ class JobBoardPaginationQuery extends AbstractPaginationQuery
             }
 
             $query->addFilterQuery('datePublishStart:[' . Util::convertDateTime($publishedSince) . ' TO * ]');
+        }
+    }
+
+    private function configureFilterQuery(SolrDisMaxQuery $query)
+    {
+        $filters = $this->options->getFilterQueries();
+
+        foreach($filters as $filter){
+            if(is_scalar($filter)){
+                $query->addFilterQuery($filter);
+            }elseif(is_callable($filter)){
+                call_user_func_array($filter,[$query]);
+            }
         }
     }
 

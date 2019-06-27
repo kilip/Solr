@@ -12,6 +12,7 @@ namespace SolrTest\Bridge;
 
 use Core\Entity\LocationInterface;
 use Jobs\Entity\Location;
+use PHPUnit\Framework\TestCase;
 use Solr\Bridge\Manager;
 use Solr\Bridge\Util;
 use InvalidArgumentException;
@@ -24,7 +25,7 @@ use InvalidArgumentException;
  * @since  0.26
  * @package SolrTest\Bridge
  */
-class UtilTest extends \PHPUnit_Framework_TestCase
+class UtilTest extends TestCase
 {
     public function testConvertDateTime()
     {

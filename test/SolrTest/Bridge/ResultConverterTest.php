@@ -9,6 +9,7 @@
 namespace SolrTest\Bridge;
 
 use Interop\Container\ContainerInterface;
+use PHPUnit\Framework\TestCase;
 use Solr\Bridge\ResultConverter;
 use Core\Repository\RepositoryService;
 use Core\Repository\AbstractRepository;
@@ -23,11 +24,11 @@ use ArrayObject;
  * @author Anthonius Munthi <me@itstoni.com>
  * @author Miroslav Fedeleš <miroslav.fedeles@gmail.com>
  * @since 0.26
- * @covers Solr\Bridge\ResultConverter
+ * @covers \Solr\Bridge\ResultConverter
  * @package SolrTest\Bridge
  * @coversDefaultClass \Solr\Bridge\ResultConverter
  */
-class ResultConverterTest extends \PHPUnit_Framework_TestCase
+class ResultConverterTest extends TestCase
 {
     /**
      * @covers ::factory

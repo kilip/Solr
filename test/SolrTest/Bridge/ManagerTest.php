@@ -11,6 +11,8 @@ namespace SolrTest\Bridge;
 
 
 use Interop\Container\ContainerInterface;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Solr\Bridge\Manager;
 use Solr\Options\ModuleOptions as ConnectOption;
 
@@ -21,15 +23,15 @@ use Solr\Options\ModuleOptions as ConnectOption;
  * @author  Mathias Gelhausen <gelhausen@cross-solution.de>
  * @author Miroslav Fedeleš <miroslav.fedeles@gmail.com>
  * @since   0.26
- * @covers  Solr\Bridge\Manager
+ * @covers  \Solr\Bridge\Manager
  * @requires extension solr
  * @package SolrTest\Bridge
  */
-class ManagerTest extends \PHPUnit_Framework_TestCase
+class ManagerTest extends TestCase
 {
     /**
      * Mock for ConnectOption class
-     * @var \PHPUnit_Framework_MockObject_MockObject
+     * @var MockObject
      */
     protected $option;
 
@@ -38,7 +40,7 @@ class ManagerTest extends \PHPUnit_Framework_TestCase
      */
     protected $target;
 
-    public function setUp()
+    public function setUp():void
     {
        $option = $this->getMockBuilder(ConnectOption::class)
             ->getMock()
