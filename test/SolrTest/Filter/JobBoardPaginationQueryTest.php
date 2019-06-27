@@ -185,15 +185,29 @@ class JobBoardPaginationQueryTest extends TestCase
 
     public function testCreateQueryWithFilterQueries()
     {
+        $callback = function(SolrDisMaxQuery $query){
+            $query->addFilterQuery('from-callback');
+        };
+
         $options = new ModuleOptions([
             'filterQueries' => [
-                'entityName:job'
+                'some-filter',
+                $callback
             ]
         ]);
         $facets = $this->createMock(Facets::class);
         $query = $this->createMock(SolrDisMaxQuery::class);
-        $ob = new JobBoardPaginationQuery($options);
 
-        $ob->filter([],$query,$facets);
+        $query->expects($this->exactly(4))
+            ->method('addFilterQuery')
+            ->withConsecutive(
+                ['entityName:job'],
+                ['isActive:1'],
+                ['some-filter'],
+                ['from-callback']
+            );
+
+        $target = new JobBoardPaginationQuery($options);
+        $target->filter([],$query,$facets);
     }
 }
